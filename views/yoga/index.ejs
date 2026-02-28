@@ -1,145 +1,107 @@
 <% layout('layouts/boilerplate') %>
 
-<style>
-  body {
-    background: linear-gradient(142deg, rgb(166, 249, 249) 17%, rgb(243, 245, 245) 50%, rgb(166, 249, 249) 89%);
-    font-family: 'Inter', sans-serif;
-  }
+<div class="container py-5">
 
-  .yoga-wrapper {
-    max-width: 1100px;
-    margin: 60px auto;
-  }
-
-  .yoga-hero {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-
-  .yoga-hero h2 {
-    font-size: 42px;
-    font-weight: 700;
-    background: linear-gradient(90deg, #1808f9 0%, #E17100 50%, #f1ab2a 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .yoga-hero p {
-    max-width: 700px;
-    margin: auto;
-    font-size: 16px;
-  }
-
-  .yoga-card {
-    background: rgba(255,255,255,0.9);
-    backdrop-filter: blur(10px);
-    border-radius: 18px;
-    padding: 40px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-    text-align: center;
-  }
-
-  .start-btn {
-    height: 48px;
-    width: 220px;
-    border-radius: 12px;
-    border: none;
-    font-weight: 600;
-    font-size: 16px;
-    color: white;
-    background: linear-gradient(90deg, #85f76e 0%, #017613 100%);
-    transition: 0.3s;
-  }
-
-  .start-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  }
-
-  .camera-box {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    position: relative;
-  }
-
-  video, canvas {
-    border-radius: 14px;
-  }
-
-  #video {
-    display: none;
-  }
-
-  #feedback {
-    margin-top: 30px;
-    font-size: 18px;
-    font-weight: 600;
-    color: #364153;
-  }
-
-  @media (max-width: 768px) {
-    .yoga-hero h2 {
-      font-size: 28px;
-    }
-    video, canvas {
-      width: 100%;
-      height: auto;
-    }
-  }
-</style>
-
-<div class="yoga-wrapper">
-
-  <!-- HERO SECTION -->
-  <div class="yoga-hero">
-    <h2>🧘 Yoga Posture Correction</h2>
-    <p>
-      Real-time AI posture analysis using MediaPipe Pose.
-      Improve alignment, prevent injuries, and perfect your asanas.
-    </p>
-  </div>
-
-  <!-- MAIN CARD -->
-  <div class="yoga-card">
-
-    <h5 class="mb-3">How It Works</h5>
-    <p>
-      This tool uses computer vision to detect your body posture
-      in real time and give instant correction feedback.
-    </p>
-
-    <!-- Start Button -->
-    <button id="startBtn" class="start-btn mt-3">
-      📷 Start Camera
-    </button>
-
-    <!-- Camera -->
-    <div class="camera-box">
-      <video id="video"
-             width="640"
-             height="480"
-             autoplay
-             playsinline>
-      </video>
-
-      <canvas id="canvas"
-              width="640"
-              height="480"
-              style="position:absolute; top:0; left:0;">
-      </canvas>
+    <!-- Title Section -->
+    <div class="mb-4">
+        <h1 class="display-6 fw-bold text-success">
+            Yoga Posture Correction
+        </h1>
+        <p class="text-muted">
+            Use computer vision to perfect your asanas and practice with proper alignment
+        </p>
     </div>
 
-    <!-- Feedback -->
-    <h5 id="feedback">
-      Click "Start Camera" to begin 🧘
-    </h5>
+    <!-- How It Works -->
+    <div class="card border-success mb-5" style="border-radius: 12px;">
+        <div class="card-body">
+            <h6 class="fw-bold">
+                <i class="bi bi-chevron-down me-2"></i> How It Works
+            </h6>
+            <p class="small text-muted">
+                This tool uses MediaPipe Pose to detect body key points in real-time and provide posture feedback.
+            </p>
+            <ol class="small text-muted">
+                <li>Click "Start Camera"</li>
+                <li>Ensure full body is visible</li>
+                <li>Click "Start Detection"</li>
+            </ol>
+        </div>
+    </div>
 
-  </div>
+    <div class="row g-4">
+
+        <!-- CAMERA SECTION -->
+        <div class="col-md-6">
+            <div class="card shadow-sm" style="border-radius: 14px;">
+                <div class="card-body">
+                    <h6 class="fw-bold">Camera Feed</h6>
+                    <p class="small text-muted">Position yourself in frame</p>
+
+                    <!-- Video + Canvas -->
+                    <div class="position-relative rounded overflow-hidden"
+                         style="height: 400px; background: #000;">
+
+                        <video id="video"
+                               autoplay
+                               playsinline
+                               class="w-100 h-100"
+                               style="object-fit: cover;">
+                        </video>
+
+                        <canvas id="canvas"
+                                class="position-absolute top-0 start-0 w-100 h-100">
+                        </canvas>
+                    </div>
+
+                    <!-- ✅ FIXED BUTTON ID -->
+                    <button id="startBtn"
+                            class="btn btn-success w-100 mt-3">
+                        <i class="bi bi-camera-video me-2"></i>
+                        Start Camera
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- POSE SECTION -->
+        <div class="col-md-6">
+            <div class="card shadow-sm" style="border-radius: 14px;">
+                <div class="card-body">
+                    <h6 class="fw-bold">Select Pose</h6>
+                    <p class="small text-muted">Choose a yoga asana</p>
+
+                    <select id="poseSelect" class="form-select">
+                        <option selected disabled>Choose a pose</option>
+                        <option value="tree">Tree Pose</option>
+                        <option value="warrior">Warrior II</option>
+                        <option value="mountain">Mountain Pose</option>
+                        <option value="downdog">Downward Dog</option>
+                    </select>
+
+                    <!-- Optional detection button -->
+                    <button id="startDetection"
+                            class="btn btn-outline-success w-100 mt-3">
+                        Start Detection
+                    </button>
+
+                    <div class="mt-4">
+                        <h6 class="fw-bold">Feedback</h6>
+                        <p id="feedback" class="text-muted">
+                            Waiting to start...
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 </div>
 
-<!-- MediaPipe Scripts -->
+<!-- MediaPipe Scripts (ORDER IMPORTANT) -->
 <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>

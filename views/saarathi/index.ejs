@@ -151,6 +151,14 @@
     background: var(--athens-gray);
   }
 
+  .answer-box {
+    margin-top: 20px;
+    padding: 16px;
+    background: var(--magnolia);
+    border-radius: 10px;
+    border: 1px solid var(--blue-chalk);
+  }
+
   @media (max-width: 1024px) {
     .text-cards-grid {
       grid-template-columns: 1fr;
@@ -197,21 +205,52 @@
           Share your dilemma or life question. The guide will respond with wisdom from ancient texts.
         </p>
 
-        <textarea placeholder="What ethical or life question are you facing?" rows="3"></textarea>
+        <!-- ✅ FORM CONNECTED TO BACKEND -->
+        <form method="POST" action="/">
+          <textarea 
+            name="question"
+            placeholder="What ethical or life question are you facing?"
+            rows="3"
+            required
+          ></textarea>
 
-        <button class="btn-seek">Seek Guidance</button>
+          <button type="submit" class="btn-seek">
+            Seek Guidance
+          </button>
+        </form>
+
+        <!-- ✅ SHOW ANSWER -->
+        <% if (typeof answer !== "undefined" && answer) { %>
+          <div class="answer-box">
+            <pre style="white-space: pre-wrap; font-family: inherit;"><%= answer %></pre>
+          </div>
+        <% } %>
 
         <div style="margin-top:20px;">
           <p style="font-size:13px; color:#4A5565;">Try these example questions:</p>
 
-          <button class="example-btn">I feel stressed about work deadlines. How can I find peace?</button>
-          <button class="example-btn">How do I make the right ethical decision when both choices seem difficult?</button>
-          <button class="example-btn">I struggle with procrastination. What does yoga philosophy say about this?</button>
-          <button class="example-btn">How can I be more content with what I have?</button>
+          <button type="button" class="example-btn">I feel stressed about work deadlines. How can I find peace?</button>
+          <button type="button" class="example-btn">How do I make the right ethical decision when both choices seem difficult?</button>
+          <button type="button" class="example-btn">I struggle with procrastination. What does yoga philosophy say about this?</button>
+          <button type="button" class="example-btn">How can I be more content with what I have?</button>
         </div>
+
       </div>
 
     </section>
 
   </div>
 </main>
+
+<script>
+  // Auto-fill example buttons
+  const examples = document.querySelectorAll(".example-btn");
+  const textarea = document.querySelector("textarea");
+
+  examples.forEach(btn => {
+    btn.addEventListener("click", () => {
+      textarea.value = btn.innerText;
+      textarea.focus();
+    });
+  });
+</script>

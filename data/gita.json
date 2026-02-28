@@ -1,0 +1,94 @@
+{
+  "chapters": {
+    "2": {
+      "name": "Sankhya Yoga",
+      "verses": {
+        "14": {
+          "text": "मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः...",
+          "meaning": "Happiness and distress are temporary; learn to tolerate them patiently.",
+          "theme": ["emotions", "pain", "suffering", "mental strength", "hard times"]
+        },
+        "47": {
+          "text": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन...",
+          "meaning": "You have a right to perform your duty, but not to the fruits of action.",
+          "theme": ["duty", "responsibility", "karma", "work", "career", "results"]
+        },
+        "48": {
+          "text": "योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय...",
+          "meaning": "Perform your duty with balance of mind, abandoning attachment to success or failure.",
+          "theme": ["focus", "balance", "stress", "success", "failure"]
+        },
+        "70": {
+          "text": "आपूर्यमाणम् अचलप्रतिष्ठं...",
+          "meaning": "One who is not disturbed by endless desires attains peace.",
+          "theme": ["desire", "peace", "contentment", "wants", "greed"]
+        }
+      }
+    },
+    "3": {
+      "name": "Karma Yoga",
+      "verses": {
+        "19": {
+          "text": "तस्मादसक्तः सततं कार्यं कर्म समाचर...",
+          "meaning": "Therefore, perform your duty faithfully without attachment.",
+          "theme": ["discipline", "work", "consistency", "effort", "duty"]
+        },
+        "30": {
+          "text": "मयि सर्वाणि कर्माणि संन्यस्य...",
+          "meaning": "Dedicate all actions to the Divine, free from ego and anxiety.",
+          "theme": ["ego", "stress", "anxiety", "pressure", "overthinking"]
+        }
+      }
+    },
+    "4": {
+      "name": "Jnana Yoga",
+      "verses": {
+        "7": {
+          "text": "यदा यदा हि धर्मस्य ग्लानिर्भवति...",
+          "meaning": "Whenever righteousness declines, I manifest to restore balance.",
+          "theme": ["hope", "justice", "faith", "dark times", "trust"]
+        },
+        "38": {
+          "text": "न हि ज्ञानेन सदृशं पवित्रमिह विद्यते...",
+          "meaning": "Nothing is as purifying as knowledge.",
+          "theme": ["learning", "wisdom", "clarity", "education", "confusion"]
+        }
+      }
+    },
+    "6": {
+      "name": "Dhyana Yoga",
+      "verses": {
+        "5": {
+          "text": "उद्धरेदात्मनाऽत्मानं...",
+          "meaning": "Lift yourself by your own mind; do not degrade yourself.",
+          "theme": ["self growth", "confidence", "motivation", "self belief", "improvement"]
+        },
+        "26": {
+          "text": "यतो यतो निश्चरति मनश्चञ्चलमस्थिरम्...",
+          "meaning": "Whenever the mind wanders, bring it back under control.",
+          "theme": ["focus", "distraction", "mind control", "concentration", "study"]
+        }
+      }
+    },
+    "12": {
+      "name": "Bhakti Yoga",
+      "verses": {
+        "15": {
+          "text": "यस्मान्नोद्विजते लोको लोकान्नोद्विजते च यः...",
+          "meaning": "One who is free from anger and disturbance is dear to the Divine.",
+          "theme": ["anger", "relationships", "peaceful nature", "kindness"]
+        }
+      }
+    },
+    "18": {
+      "name": "Moksha Yoga",
+      "verses": {
+        "66": {
+          "text": "सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज...",
+          "meaning": "Surrender completely and do not fear; you will be protected.",
+          "theme": ["fear", "anxiety", "faith", "trust", "surrender"]
+        }
+      }
+    }
+  }
+}
