@@ -22,6 +22,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/madhav-ai")
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+app.use(express.static(path.join(__dirname, "public")));
 
 // ✅ Middleware
 app.use(express.urlencoded({ extended: true }));

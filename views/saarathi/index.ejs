@@ -1,33 +1,217 @@
 <% layout('layouts/boilerplate') %>
 
-<h2 class="text-primary mb-4">SAARATHI</h2>
+<style>
+  :root {
+    --white: #FFFFFF;
+    --white-80: rgba(255, 255, 255, 0.8);
+    --navajo-white: #FFD6A7;
+    --blue-chalk: #E9D4FF;
+    --grenadier: #CA3500;
+    --river-bed: #4A5565;
+    --cod-gray: #0A0A0A;
+    --storm-gray: #717182;
+    --oxford-blue: #364153;
+    --teal: #009689;
+    --magnolia: #FAF5FF;
+    --seance: #59168B;
+    --electric-violet: #9810FA;
+    --carousel-pink: #FDF2F8;
+    --classic-rose: #FCCEE8;
+    --rose-bud-cherry: #861043;
+    --lipstick: #C6005C;
+    --athens-gray: #F3F3F5;
+    --black-10: rgba(0, 0, 0, 0.1);
+    --black-0: rgba(0, 0, 0, 0);
+    --purple-gradient: linear-gradient(90deg, rgba(152, 16, 250, 1) 0%, rgba(230, 0, 118, 1) 100%);
+  }
 
-<div class="card p-4 shadow-sm">
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 0 120px;
+    gap: 32px;
+  }
 
-    <h5>Seek Ethical Guidance</h5>
+  .content {
+    width: 100%;
+    max-width: 1216px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
 
-    <form action="/saarathi" method="POST">
+  .page-header h1 {
+    font-size: 36px;
+    font-weight: 400;
+    background: var(--purple-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 
-        <div class="mb-3">
-            <input 
-                type="text" 
-                name="question" 
-                class="form-control" 
-                placeholder="What dilemma are you facing?" 
-                required
-            >
+  .page-header p {
+    font-size: 13px;
+    color: var(--river-bed);
+  }
+
+  .card-dharma {
+    background: linear-gradient(177deg, #FAF5FF 0%, #FDF2F8 100%);
+    border: 1px solid var(--blue-chalk);
+    border-radius: 14px;
+    padding: 24px;
+  }
+
+  .text-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .text-card {
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .gita {
+    background: var(--magnolia);
+    border: 1px solid var(--blue-chalk);
+  }
+
+  .sutras {
+    background: var(--carousel-pink);
+    border: 1px solid var(--classic-rose);
+  }
+
+  .ask-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tabs-container {
+    display: flex;
+    background: var(--athens-gray);
+    border-radius: 14px;
+    padding: 3px;
+    width: fit-content;
+  }
+
+  .tab {
+    padding: 6px 40px;
+    border-radius: 14px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .tab.active {
+    background: white;
+  }
+
+  .card-ask {
+    background: white;
+    border: 1px solid var(--black-10);
+    border-radius: 14px;
+    padding: 24px;
+  }
+
+  textarea {
+    width: 100%;
+    padding: 10px;
+    background: var(--athens-gray);
+    border-radius: 8px;
+    border: none;
+    resize: vertical;
+  }
+
+  .btn-seek {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    background: var(--purple-gradient);
+    cursor: pointer;
+  }
+
+  .example-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--black-10);
+    background: white;
+    margin-top: 8px;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .example-btn:hover {
+    background: var(--athens-gray);
+  }
+
+  @media (max-width: 1024px) {
+    .text-cards-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<main>
+  <div class="content">
+
+    <section class="page-header">
+      <h1>SAARATHI</h1>
+      <p>Seek ethical guidance inspired by the Bhagavad Gita and Yoga Sutras</p>
+    </section>
+
+    <section class="card-dharma">
+      <h4>What is Dharma?</h4>
+      <p><strong>Dharma (धर्म)</strong> means righteousness, duty, and harmony with universal principles.</p>
+      <p>This guide draws wisdom from two timeless texts:</p>
+
+      <div class="text-cards-grid">
+        <div class="text-card gita">
+          <h4>Bhagavad Gita</h4>
+          <p>A 700-verse dialogue on duty, action, and reality</p>
         </div>
 
-        <button class="btn btn-primary w-100">
-            Seek Guidance
-        </button>
+        <div class="text-card sutras">
+          <h4>Yoga Sutras</h4>
+          <p>Patanjali's 196 aphorisms on the path to self-realization</p>
+        </div>
+      </div>
+    </section>
 
-    </form>
+    <section class="ask-section">
 
-    <% if(typeof answer !== 'undefined'){ %>
-        <hr>
-        <h5>Guidance:</h5>
-        <p class="mt-2"><%= answer %></p>
-    <% } %>
+      <div class="tabs-container">
+        <button class="tab active">Ask for Guidance</button>
+        <button class="tab">Browse Teachings</button>
+      </div>
 
-</div>
+      <div class="card-ask">
+        <h4>Ask Your Question</h4>
+        <p style="color:#717182; font-size:13px;">
+          Share your dilemma or life question. The guide will respond with wisdom from ancient texts.
+        </p>
+
+        <textarea placeholder="What ethical or life question are you facing?" rows="3"></textarea>
+
+        <button class="btn-seek">Seek Guidance</button>
+
+        <div style="margin-top:20px;">
+          <p style="font-size:13px; color:#4A5565;">Try these example questions:</p>
+
+          <button class="example-btn">I feel stressed about work deadlines. How can I find peace?</button>
+          <button class="example-btn">How do I make the right ethical decision when both choices seem difficult?</button>
+          <button class="example-btn">I struggle with procrastination. What does yoga philosophy say about this?</button>
+          <button class="example-btn">How can I be more content with what I have?</button>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+</main>

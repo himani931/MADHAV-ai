@@ -1,42 +1,211 @@
 <% layout('layouts/boilerplate') %>
 
-<section class="hero text-center mb-5">
-    <span class="badge badge-soft">Ancient Wisdom for Modern Minds</span>
+<style>
+  :root {
+    --white: #FFFFFF;
+    --navajo-white: #FFD6A7;
+    --papaya-whip: #E9D4FF;
+    --river-bed: #4A5565;
+    --cod-gray: #0A0A0A;
+    --storm-gray: #717182;
+    --oxford-blue: #364153;
+    --teal: #009689;
+    --footer: #171616;
+  }
 
-    <h1 class="hero-title">
-        WHEN CONSCIOUSNESS MEETS CODE
-    </h1>
+  body {
+    background: linear-gradient(142deg, rgb(166, 249, 249) 17%, rgb(243, 245, 245) 50%, rgb(166, 249, 249) 89%);
+    font-family: 'Inter', sans-serif;
+  }
 
-    <p class="hero-sub">
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .content {
+    width: 100%;
+    max-width: 1216px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 48px 0;
+  }
+
+  .hero h1 {
+    font-size: 58px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #1808f9 0%, #E17100 50%, #f1ab2a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero p {
+    max-width: 700px;
+    margin: auto;
+    font-size: 16px;
+  }
+
+  .hero-image-wrap {
+    height: 400px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 16px;
+  }
+
+  .hero-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cards {
+    display: flex;
+    gap: 24px;
+  }
+
+  .card {
+    flex: 1;
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 192px;
+    object-fit: cover;
+  }
+
+  .card-content {
+    padding: 24px;
+  }
+
+  .card-cta {
+    padding: 0 24px 24px;
+    margin-top: auto;
+  }
+
+  .card-cta a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(90deg, #85f76e 0%, #017613 100%);
+  }
+
+  .philosophy {
+    background: #F3F3F5;
+    border-radius: 14px;
+    padding: 24px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--footer);
+  }
+
+  @media (max-width: 1024px) {
+    .cards {
+      flex-direction: column;
+    }
+    .hero h1 {
+      font-size: 36px;
+    }
+  }
+</style>
+
+<main>
+  <div class="content">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-badge">Ancient Wisdom for Modern Minds</div>
+      <h1>WHEN CONSCIOUSNESS MEETS CODE</h1>
+      <p>
         Use timeless Indian philosophy to debug the modern mind.
-        Integrate Ayurvedic principles, yoga wisdom, and ethical guidance.
-    </p>
-</section>
+        Integrate Ayurvedic principles, yoga wisdom, and ethical guidance into your daily life.
+      </p>
 
-<div class="row g-4">
+      <div class="hero-image-wrap">
+        <img src="/images/hero.png" alt="Meditation">
+      </div>
+    </section>
 
-    <div class="col-md-4">
-        <div class="feature-card orange">
-            <h5>☀️ Dinacharya Planner</h5>
-            <p>Align your daily schedule with Ayurvedic body clocks.</p>
-            <a href="/dinacharya" class="btn btn-orange">Get Started →</a>
+    <!-- CARDS -->
+    <section class="cards">
+
+      <div class="card">
+        <div class="card-image">
+          <img src="/images/dinacharya.png" alt="Dinacharya">
         </div>
-    </div>
-
-    <div class="col-md-4">
-        <div class="feature-card green">
-            <h5>🧘 Yoga Posture Correction</h5>
-            <p>Improve alignment and prevent injuries.</p>
-            <a href="/yoga" class="btn btn-green">Start Practice →</a>
+        <div class="card-content">
+          <h4>Dinacharya Planner</h4>
+          <p>Align your daily schedule with Ayurvedic body clocks</p>
         </div>
-    </div>
-
-    <div class="col-md-4">
-        <div class="feature-card pink">
-            <h5>📖 SAARATHI</h5>
-            <p>Ethical decision-making wisdom from Bhagavad Gita.</p>
-            <a href="/saarathi" class="btn btn-pink">Seek Guidance →</a>
+        <div class="card-cta">
+          <a href="/dinacharya">Get Started</a>
         </div>
-    </div>
+      </div>
 
-</div>
+      <div class="card">
+        <div class="card-image">
+          <img src="/images/yoga.png" alt="Yoga">
+        </div>
+        <div class="card-content">
+          <h4>Yoga Posture Correction</h4>
+          <p>Real-time computer vision analysis for asanas</p>
+        </div>
+        <div class="card-cta">
+          <a href="/yoga">Get Started</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-image">
+          <img src="/images/saarathi.png" alt="Saarathi">
+        </div>
+        <div class="card-content">
+          <h4>SAARATHI</h4>
+          <p>Ethical guidance from Bhagavad Gita & Yoga Sutras</p>
+        </div>
+        <div class="card-cta">
+          <a href="/saarathi">Get Started</a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section class="philosophy">
+      <h4>The Philosophy</h4>
+      <p>
+        In an age of information overload, we’ve lost touch with natural rhythms.
+        Ancient Indian wisdom offers harmony for body and mind.
+      </p>
+      <ul>
+        <li><strong>Dinacharya:</strong> Sync your life with nature</li>
+        <li><strong>Yoga:</strong> Alignment of body and consciousness</li>
+        <li><strong>Dharma:</strong> Righteous action guided by eternal principles</li>
+      </ul>
+    </section>
+
+  </div>
+
+  <footer>
+    © 2026 Madhav AI. Designed with ❤️ for Ancient Wisdom & Modern Solutions
+  </footer>
+
+</main>

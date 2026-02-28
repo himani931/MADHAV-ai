@@ -1,19 +1,148 @@
 <% layout('layouts/boilerplate') %>
 
-<h2 class="text-success mb-4">Yoga Posture Correction</h2>
+<style>
+  body {
+    background: linear-gradient(142deg, rgb(166, 249, 249) 17%, rgb(243, 245, 245) 50%, rgb(166, 249, 249) 89%);
+    font-family: 'Inter', sans-serif;
+  }
 
-<div class="card p-4 shadow-sm">
+  .yoga-wrapper {
+    max-width: 1100px;
+    margin: 60px auto;
+  }
 
-    <h5>How It Works</h5>
+  .yoga-hero {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .yoga-hero h2 {
+    font-size: 42px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #1808f9 0%, #E17100 50%, #f1ab2a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .yoga-hero p {
+    max-width: 700px;
+    margin: auto;
+    font-size: 16px;
+  }
+
+  .yoga-card {
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 18px;
+    padding: 40px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    text-align: center;
+  }
+
+  .start-btn {
+    height: 48px;
+    width: 220px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
+    background: linear-gradient(90deg, #85f76e 0%, #017613 100%);
+    transition: 0.3s;
+  }
+
+  .start-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+
+  .camera-box {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  video, canvas {
+    border-radius: 14px;
+  }
+
+  #video {
+    display: none;
+  }
+
+  #feedback {
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #364153;
+  }
+
+  @media (max-width: 768px) {
+    .yoga-hero h2 {
+      font-size: 28px;
+    }
+    video, canvas {
+      width: 100%;
+      height: auto;
+    }
+  }
+</style>
+
+<div class="yoga-wrapper">
+
+  <!-- HERO SECTION -->
+  <div class="yoga-hero">
+    <h2>🧘 Yoga Posture Correction</h2>
     <p>
-        This tool will use computer vision (TensorFlow MoveNet) 
-        to detect your body posture in real time.
+      Real-time AI posture analysis using MediaPipe Pose.
+      Improve alignment, prevent injuries, and perfect your asanas.
+    </p>
+  </div>
+
+  <!-- MAIN CARD -->
+  <div class="yoga-card">
+
+    <h5 class="mb-3">How It Works</h5>
+    <p>
+      This tool uses computer vision to detect your body posture
+      in real time and give instant correction feedback.
     </p>
 
-    <div class="text-center mt-4">
-        <button class="btn btn-success btn-lg">
-            📷 Start Camera
-        </button>
+    <!-- Start Button -->
+    <button id="startBtn" class="start-btn mt-3">
+      📷 Start Camera
+    </button>
+
+    <!-- Camera -->
+    <div class="camera-box">
+      <video id="video"
+             width="640"
+             height="480"
+             autoplay
+             playsinline>
+      </video>
+
+      <canvas id="canvas"
+              width="640"
+              height="480"
+              style="position:absolute; top:0; left:0;">
+      </canvas>
     </div>
 
+    <!-- Feedback -->
+    <h5 id="feedback">
+      Click "Start Camera" to begin 🧘
+    </h5>
+
+  </div>
+
 </div>
+
+<!-- MediaPipe Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+
+<!-- Your Custom JS -->
+<script src="/js/yogaPose.js"></script>
