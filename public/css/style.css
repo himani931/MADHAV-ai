@@ -1,0 +1,102 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(to right, #fdf6e3, #f6efe5);
+    color: #333;
+}
+
+/* Navbar */
+.custom-nav {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #eee;
+}
+
+.brand {
+    font-weight: 700;
+    color: #ff7a00 !important;
+}
+
+.nav-link {
+    font-weight: 500;
+    margin-left: 20px;
+}
+
+.nav-highlight {
+    background: linear-gradient(to right, #ff7a00, #ff3c9e);
+    color: white !important;
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+/* Hero Section */
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 20px;
+    background: linear-gradient(to right, #ff7a00, #ff3c9e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-sub {
+    max-width: 700px;
+    margin: auto;
+    color: #666;
+}
+
+.badge-soft {
+    background: #f3e8ff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+/* Feature Cards */
+.feature-card {
+    padding: 30px;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.orange { border-top: 4px solid #ff7a00; }
+.green { border-top: 4px solid #00a86b; }
+.pink { border-top: 4px solid #ff3c9e; }
+
+/* Buttons */
+.btn-orange {
+    background: #ff7a00;
+    color: white;
+    border-radius: 10px;
+}
+
+.btn-green {
+    background: #00a86b;
+    color: white;
+    border-radius: 10px;
+}
+
+.btn-pink {
+    background: #ff3c9e;
+    color: white;
+    border-radius: 10px;
+}
+
+.btn-orange:hover,
+.btn-green:hover,
+.btn-pink:hover {
+    opacity: 0.9;
+}
+.auth-card {
+    max-width: 400px;
+    margin: auto;
+    padding: 40px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+}

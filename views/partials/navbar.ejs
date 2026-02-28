@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-light custom-nav">
+  <div class="container">
+
+    <a class="navbar-brand brand" href="/">
+        ✨ MADHAV AI
+    </a>
+
+    <div class="collapse navbar-collapse justify-content-end">
+      <ul class="navbar-nav">
+
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/dinacharya">Dinacharya</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/yoga">Yoga Posture</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link nav-highlight" href="/saarathi">SAARATHI</a>
+        </li>
+
+      </ul>
+    </div>
+
+    <ul class="navbar-nav ms-auto">
+
+    
+
+    <% if(!currentUser){ %>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link nav-highlight" href="/register">
+                Register
+            </a>
+        </li>
+
+    <% } else { %>
+
+        <li class="nav-item">
+            <span class="nav-link">
+                Hello <%= currentUser.username %>
+            </span>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link nav-highlight" href="/logout">
+                Logout
+            </a>
+        </li>
+
+    <% } %>
+
+</ul>
+
+  </div>
+</nav>

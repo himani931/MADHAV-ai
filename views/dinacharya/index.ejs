@@ -1,0 +1,29 @@
+<% layout('layouts/boilerplate') %>
+
+<h2 class="mb-4 text-warning">Dinacharya Planner</h2>
+
+<div class="card p-4 shadow-sm">
+
+    <h5>What is Dinacharya?</h5>
+    <p>
+        Dinacharya means daily routine aligned with natural rhythms.
+    </p>
+
+    <form action="/dinacharya" method="POST">
+
+        <div class="mb-3">
+            <label class="form-label">Select Your Dosha</label>
+            <select name="dosha" class="form-select">
+                <option value="Vata">Vata</option>
+                <option value="Pitta">Pitta</option>
+                <option value="Kapha">Kapha</option>
+            </select>
+        </div>
+
+        <button class="btn btn-warning w-100">
+            Generate Routine
+        </button>
+
+    </form>
+
+</div>

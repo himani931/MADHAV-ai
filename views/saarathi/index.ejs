@@ -1,0 +1,33 @@
+<% layout('layouts/boilerplate') %>
+
+<h2 class="text-primary mb-4">SAARATHI</h2>
+
+<div class="card p-4 shadow-sm">
+
+    <h5>Seek Ethical Guidance</h5>
+
+    <form action="/saarathi" method="POST">
+
+        <div class="mb-3">
+            <input 
+                type="text" 
+                name="question" 
+                class="form-control" 
+                placeholder="What dilemma are you facing?" 
+                required
+            >
+        </div>
+
+        <button class="btn btn-primary w-100">
+            Seek Guidance
+        </button>
+
+    </form>
+
+    <% if(typeof answer !== 'undefined'){ %>
+        <hr>
+        <h5>Guidance:</h5>
+        <p class="mt-2"><%= answer %></p>
+    <% } %>
+
+</div>
