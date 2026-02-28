@@ -1,29 +1,74 @@
 <% layout('layouts/boilerplate') %>
 
-<h2 class="mb-4 text-warning">Dinacharya Planner</h2>
+    <link rel="stylesheet" href="/css/dinacharya.css">
 
-<div class="card p-4 shadow-sm">
+    <div class="dinacharya-wrapper">
 
-    <h5>What is Dinacharya?</h5>
-    <p>
-        Dinacharya means daily routine aligned with natural rhythms.
-    </p>
-
-    <form action="/dinacharya" method="POST">
-
-        <div class="mb-3">
-            <label class="form-label">Select Your Dosha</label>
-            <select name="dosha" class="form-select">
-                <option value="Vata">Vata</option>
-                <option value="Pitta">Pitta</option>
-                <option value="Kapha">Kapha</option>
-            </select>
+        <div class="page-header">
+            <h1>Dinacharya Planner</h1>
+            <p>Align your routine with Ayurvedic body cycles</p>
         </div>
 
-        <button class="btn btn-warning w-100">
-            Generate Routine
-        </button>
+        <!-- Info Card -->
+        <div class="card-custom">
+            <h4>What is Dinacharya?</h4>
+            <p>
+                Dinacharya (दिनचर्या) is the Ayurvedic daily routine system
+                aligned with dosha cycles.
+            </p>
 
-    </form>
+            <div class="dosha-grid">
+                <div class="dosha-card vata">
+                    <h5>Vata</h5>
+                    <p>2–6 AM & PM</p>
+                </div>
 
-</div>
+                <div class="dosha-card pitta">
+                    <h5>Pitta</h5>
+                    <p>10–2 AM & PM</p>
+                </div>
+
+                <div class="dosha-card kapha">
+                    <h5>Kapha</h5>
+                    <p>6–10 AM & PM</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Select Dosha -->
+        <div class="card-custom">
+            <form method="POST" action="/dinacharya">
+                <select name="dosha" class="select-box">
+                    <option value="balanced">Balanced</option>
+                    <option value="vata">Vata</option>
+                    <option value="pitta">Pitta</option>
+                    <option value="kapha">Kapha</option>
+                </select>
+
+                <button type="submit" class="btn-generate">
+                    Generate Schedule
+                </button>
+            </form>
+        </div>
+
+        <!-- Schedule -->
+        <div class="card-custom">
+            <% if (typeof schedule !=="undefined" && schedule) { %>
+                <h4>Your Personalized Plan</h4>
+
+                <div class="schedule-list">
+                    <% schedule.forEach(item=> { %>
+                        <div class="schedule-item">
+                            <strong>
+                                <%= item.time %>
+                            </strong> — <%= item.activity %>
+                        </div>
+                        <% }) %>
+                </div>
+
+                <% } else { %>
+                    <p>Select a dosha to generate your daily routine.</p>
+                    <% } %>
+        </div>
+
+    </div>

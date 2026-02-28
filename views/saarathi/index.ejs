@@ -3,26 +3,14 @@
 <style>
   :root {
     --white: #FFFFFF;
-    --white-80: rgba(255, 255, 255, 0.8);
-    --navajo-white: #FFD6A7;
     --blue-chalk: #E9D4FF;
-    --grenadier: #CA3500;
     --river-bed: #4A5565;
-    --cod-gray: #0A0A0A;
-    --storm-gray: #717182;
-    --oxford-blue: #364153;
-    --teal: #009689;
     --magnolia: #FAF5FF;
-    --seance: #59168B;
-    --electric-violet: #9810FA;
     --carousel-pink: #FDF2F8;
     --classic-rose: #FCCEE8;
-    --rose-bud-cherry: #861043;
-    --lipstick: #C6005C;
     --athens-gray: #F3F3F5;
     --black-10: rgba(0, 0, 0, 0.1);
-    --black-0: rgba(0, 0, 0, 0);
-    --purple-gradient: linear-gradient(90deg, rgba(152, 16, 250, 1) 0%, rgba(230, 0, 118, 1) 100%);
+    --purple-gradient: linear-gradient(90deg, rgba(152,16,250,1) 0%, rgba(230,0,118,1) 100%);
   }
 
   main {
@@ -205,8 +193,8 @@
           Share your dilemma or life question. The guide will respond with wisdom from ancient texts.
         </p>
 
-        <!-- ✅ FORM CONNECTED TO BACKEND -->
-        <form method="POST" action="/">
+        <!-- ✅ FIXED FORM ACTION -->
+        <form method="POST" action="/saarathi">
           <textarea 
             name="question"
             placeholder="What ethical or life question are you facing?"
@@ -220,7 +208,7 @@
         </form>
 
         <!-- ✅ SHOW ANSWER -->
-        <% if (typeof answer !== "undefined" && answer) { %>
+        <% if (answer) { %>
           <div class="answer-box">
             <pre style="white-space: pre-wrap; font-family: inherit;"><%= answer %></pre>
           </div>
@@ -243,7 +231,6 @@
 </main>
 
 <script>
-  // Auto-fill example buttons
   const examples = document.querySelectorAll(".example-btn");
   const textarea = document.querySelector("textarea");
 

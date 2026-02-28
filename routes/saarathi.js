@@ -2,21 +2,29 @@ const express = require("express");
 const router = express.Router();
 const Question = require("../models/question");
 
-// Load Gita JSON safely
+// 🔹 Load Gita JSON safely
 let gita;
 try {
     gita = require("../data/gita.json");
+    console.log("✅ Gita loaded successfully");
 } catch (err) {
-    console.error("Error loading gita.json:", err.message);
+    console.error("❌ Error loading gita.json:", err.message);
     gita = null;
 }
 
+// =============================
+// GET ROUTE
+// =============================
 router.get("/", (req, res) => {
     res.render("saarathi/index", { answer: null });
 });
 
+// =============================
+// POST ROUTE
+// =============================
 router.post("/", async (req, res) => {
     try {
+
         if (!gita || !gita.chapters) {
             return res.render("saarathi/index", {
                 answer: "Sacred texts not available 🙏",
@@ -31,13 +39,22 @@ router.post("/", async (req, res) => {
             });
         }
 
-        const userText = question.toLowerCase().trim();
+        // 🔥 Normalize user input
+        const userText = question
+            .toLowerCase()
+            .replace(/[^\w\s]/gi, "")
+            .trim();
 
-        let selectedVerse = null;
-        let selectedChapter = null;
-        let selectedVerseNumber = null;
+        const words = userText.split(/\s+/);
 
-        // 🔍 THEME-BASED MATCHING
+        let bestMatch = null;
+        let highestScore = 0;
+        let bestChapter = null;
+        let bestVerseNumber = null;
+
+        // =============================
+        // 🔍 SMART MATCHING SYSTEM
+        // =============================
         for (let chapterKey in gita.chapters) {
             const chapter = gita.chapters[chapterKey];
             const verses = chapter.verses || {};
@@ -46,34 +63,46 @@ router.post("/", async (req, res) => {
                 const verse = verses[verseKey];
 
                 if (verse.theme && Array.isArray(verse.theme)) {
-                    const matchFound = verse.theme.some((themeWord) => {
+                    let score = 0;
+
+                    verse.theme.forEach(themeWord => {
                         const theme = themeWord.toLowerCase();
-                        return (
-                            userText.includes(theme) ||
-                            theme.includes(userText)
-                        );
+
+                        words.forEach(word => {
+                            if (
+                                theme.includes(word) ||
+                                word.includes(theme)
+                            ) {
+                                score++;
+                            }
+                        });
                     });
 
-                    if (matchFound) {
-                        selectedVerse = verse;
-                        selectedChapter = chapterKey;
-                        selectedVerseNumber = verseKey;
-                        break;
+                    // Keep highest scoring verse
+                    if (score > highestScore) {
+                        highestScore = score;
+                        bestMatch = verse;
+                        bestChapter = chapterKey;
+                        bestVerseNumber = verseKey;
                     }
                 }
             }
-
-            if (selectedVerse) break;
         }
 
+        let selectedVerse = bestMatch;
+        let selectedChapter = bestChapter;
+        let selectedVerseNumber = bestVerseNumber;
+
+        // =============================
         // 🎲 RANDOM FALLBACK
+        // =============================
         if (!selectedVerse) {
             const chapters = Object.keys(gita.chapters);
             const randomChapter =
                 chapters[Math.floor(Math.random() * chapters.length)];
 
             const verses = Object.keys(
-                gita.chapters[randomChapter].verses || {}
+                gita.chapters[randomChapter].verses
             );
 
             const randomVerse =
@@ -94,17 +123,22 @@ router.post("/", async (req, res) => {
 
         const shlok = selectedVerse.text || "Verse unavailable";
         const meaning = selectedVerse.meaning || "Meaning unavailable";
+        const chapterName =
+            gita.chapters[selectedChapter].name || "Unknown Chapter";
 
         const answer = `
-📖 Chapter ${selectedChapter}, Verse ${selectedVerseNumber}
+📖 Chapter ${selectedChapter} – ${chapterName}
+Verse ${selectedVerseNumber}
 
 ${shlok}
 
 ✨ Meaning:
 ${meaning}
-    `;
+        `;
 
-        // Save to DB
+        // =============================
+        // 💾 SAVE TO DATABASE
+        // =============================
         const newQ = new Question({ question, answer });
         await newQ.save();
 
